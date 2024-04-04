@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Singleton</title>
+</head>
+
+<body>
+
+
+<script>
+
+    <!-- Pattern Observer or Publisher-Subscriber -->
+    class GlobalClock {
+        sec = 0
+        subscribers = []
+
+        constructor() {
+            setInterval(() => {
+                this.sec++
+                console.log(this.sec + ' sec.');
+                this.subscribers.forEach(s => {
+                    s(this.sec)
+                })
+            }, 1000)
+        }
+    }
+
+    const globalClock = new GlobalClock()
+
+    class UIClock1 {
+        constructor() {
+            this.el = document.createElement('div')
+            document.body.appendChild(this.el)
+        }
+
+        render(sec) {
+            this.el.innerHTML = sec
+        }
+    }
+
+    const ui1 = new UIClock1()
+    globalClock.subscribers.push(ui1.render.bind(ui1))
+
+
+    class UIClock2 {
+        constructor() {
+            this.el = document.createElement('h1')
+            document.body.appendChild(this.el)
+        }
+
+        render(sec) {
+            this.el.innerHTML = sec
+        }
+    }
+
+    const ui2 = new UIClock2()
+    globalClock.subscribers.push(ui2.render.bind(ui2))
+
+    // globalClock.subscribers.push((sec)=> {alert(sec)})
+
+</script>
+</body>
+
+</html>
