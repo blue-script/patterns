@@ -1,0 +1,33 @@
+<script>
+
+
+    class Api {
+        static singleton = null
+        constructor() {
+            if (Api.singleton != null) {
+                return Api.singleton
+            }
+            Api.singleton = this
+        }
+        getUsers() {
+            //  wait - make request
+            console.log("get")
+        }
+        createUser() {
+            //  wait - make request
+            console.log("set")
+        }
+    }
+
+    let api = new Api()
+    let api2 = new Api()
+    api.createUser()
+    api.createUser()
+    api2.createUser()
+    api2.createUser()
+    api.createUser()
+    api2.createUser()
+    api.createUser()
+    api.getUsers()
+
+</script>
