@@ -1,0 +1,18 @@
+<script>
+
+    let _a = {
+        yo(message) {
+            console.log(message)
+        }
+    }
+
+    let a = {
+        yo(message) {
+            if (message === 'fuck') message = 'f****'
+            _a.yo(message)
+        }
+    }
+
+    a.yo("fuck")
+
+</script>
