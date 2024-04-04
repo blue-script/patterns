@@ -1,0 +1,53 @@
+<script>
+    class Map {
+        load() {
+        }
+
+        setMarker(lg, lt) {
+        }
+
+        setCenter(lg, lt) {
+        }
+    }
+
+    class MapApplication {
+        constructor(map) {
+            this.map = map
+        }
+        getShops() {
+        }
+
+        findShop() {
+        }
+
+        drawMap() {
+            this.map.load()
+            this.map.setCenter(1.32545,3.345345)
+        }
+    }
+
+    class GoogleMapAdapter {
+        constructor(googleMap) {
+            this.map = googleMap
+        }
+        load() {
+            this.map.start()
+        }
+        setMarker(lg, lt) {
+            // this.map.setMarker(0, lg, lt)
+            alert("Markers not available")
+        }
+        setCenter(lg, lt) {
+            this.map.center({long:lg, lat: lt})
+        }
+    }
+
+    let map = new GoogleMap()
+    // map.start()
+    // map.center()
+    let googleMapAdapter = new GoogleMapAdapter(map)
+
+
+    let app = new MapApplication(googleMapAdapter)
+
+</script>
